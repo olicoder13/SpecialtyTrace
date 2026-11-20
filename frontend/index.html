@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Specialty Trace | Trazabilidad del Café Especial Peruano</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+              serif: ['"Fraunces"', "serif"],
+            },
+            colors: {
+              cafe: {
+                950: "#1A110B",
+                900: "#2C1D13",
+                800: "#432C1D",
+                100: "#F5EFEA",
+                50: "#FAF7F4",
+              },
+              bosque: {
+                950: "#07241B",
+                900: "#0D3B2E",
+                800: "#145341",
+                100: "#E6F2EE",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-cafe-50 text-cafe-950 font-sans antialiased selection:bg-amber-500 selection:text-cafe-950"
+  >
+    <!-- ===================================================================== -->
+    <!-- NAVBAR FLOTANTE                                                       -->
+    <!-- ===================================================================== -->
+    <header
+      class="sticky top-0 z-50 bg-bosque-950/95 backdrop-blur-md text-white border-b border-white/10"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-3.5 flex flex-wrap justify-between items-center gap-4"
+      >
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 text-bosque-950 font-serif font-extrabold flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition"
+          >
+            ST
+          </div>
+          <div>
+            <span
+              class="font-serif font-bold text-lg tracking-tight block leading-none"
+              >Specialty Trace</span
+            >
+            <span class="text-[11px] text-emerald-300/90 font-medium"
+              >Perú • Trazabilidad & Calidad SCA</span
+            >
+          </div>
+        </a>
+
+        <div
+          class="hidden md:flex items-center gap-6 text-xs font-semibold text-stone-300"
+        >
+          <a href="#propuesta" class="hover:text-amber-400 transition"
+            >Propuesta de Valor</a
+          >
+          <a href="#arquitectura" class="hover:text-amber-400 transition"
+            >Arquitectura Políglota</a
+          >
+          <a href="#plataforma" class="hover:text-amber-400 transition"
+            >Demo en Vivo</a
+          >
+        </div>
+
+        <a
+          href="#plataforma"
+          class="bg-amber-500 hover:bg-amber-400 text-bosque-950 font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2"
+        >
+          <span>Probar Sistema</span>
+          <span>&darr;</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- HERO SECTION (LANDING PAGE DE IMPACTO)                                -->
+    <!-- ===================================================================== -->
+    <section
+      id="inicio"
+      class="relative overflow-hidden bg-gradient-to-b from-bosque-950 via-bosque-900 to-cafe-950 text-white py-20 lg:py-28"
+    >
+      <!-- Decoración sutil de fondo -->
+      <div
+        class="absolute inset-0 opacity-10 pointer-events-none"
+        style="
+          background-image: radial-gradient(#f59e0b 1px, transparent 1px);
+          background-size: 28px 28px;
+        "
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+      >
+        <div class="lg:col-span-7 space-y-6">
+          <div
+            class="inline-flex items-center gap-2 bg-white/10 border border-white/15 px-3.5 py-1.5 rounded-full text-xs font-semibold text-amber-300"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"
+            ></span>
+            Conectado en tiempo real a SQL Server &amp; MongoDB
+          </div>
+
+          <h1
+            class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight"
+          >
+            Del origen en finca a la taza, con
+            <span class="text-amber-400">trazabilidad verificable.</span>
+          </h1>
+
+          <p
+            class="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed"
+          >
+            Empoderamos a pequeños caficultores peruanos para certificar la
+            altitud, proceso de beneficiado y puntaje en taza SCA de cada lote,
+            eliminando la pérdida de hasta el
+            <strong class="text-white">40% del valor comercial</strong> frente a
+            intermediarios informales.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a
+              href="#plataforma"
+              onclick="cambiarVista('qr')"
+              class="bg-amber-500 hover:bg-amber-400 text-bosque-950 font-extrabold px-6 py-3.5 rounded-xl shadow-lg shadow-amber-500/20 transition text-sm"
+            >
+              Escanear Lote Demo (QR)
+            </a>
+            <a
+              href="#plataforma"
+              onclick="cambiarVista('operaciones')"
+              class="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl transition text-sm"
+            >
+              Registrar Operaciones (SQL)
+            </a>
+          </div>
+
+          <!-- Métricas de contexto nacional -->
+          <div
+            class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-lg"
+          >
+            <div>
+              <div class="font-serif text-2xl font-bold text-amber-400">
+                +80 pts
+              </div>
+              <div class="text-xs text-stone-400">
+                Estándar Internacional SCA
+              </div>
+            </div>
+            <div>
+              <div class="font-serif text-2xl font-bold text-emerald-400">
+                12 Tablas
+              </div>
+              <div class="text-xs text-stone-400">Modelo Relacional 3FN</div>
+            </div>
+            <div>
+              <div class="font-serif text-2xl font-bold text-white">O(1)</div>
+              <div class="text-xs text-stone-400">Lectura Documental NoSQL</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta visual derecha (Preview de Certificado) -->
+        <div class="lg:col-span-5">
+          <div
+            class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 shadow-2xl"
+          >
+            <div class="bg-cafe-50 text-cafe-950 rounded-2xl p-6 space-y-5">
+              <div
+                class="flex justify-between items-start border-b border-stone-200 pb-4"
+              >
+                <div>
+                  <span
+                    class="text-[11px] font-bold uppercase tracking-widest text-bosque-800"
+                    >Pasaporte Digital de Lote</span
+                  >
+                  <h3
+                    class="font-mono font-extrabold text-xl text-cafe-950 mt-0.5"
+                  >
+                    TRZ-26-GSH-001
+                  </h3>
+                  <p class="text-xs text-stone-500">
+                    Finca El Mirador • Cusco (1,850 m.s.n.m.)
+                  </p>
+                </div>
+                <div
+                  class="bg-bosque-900 text-amber-400 font-serif font-extrabold px-3 py-2 rounded-xl text-center"
+                >
+                  <span class="text-xl block leading-none">88.5</span>
+                  <span class="text-[10px] uppercase tracking-wider text-white"
+                    >SCA</span
+                  >
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="bg-white p-3 rounded-xl border border-stone-200">
+                  <span class="text-stone-400 block">Variedad Botánica</span>
+                  <strong class="text-sm text-cafe-900">Geisha Lavado</strong>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-stone-200">
+                  <span class="text-stone-400 block">Humedad / Defectos</span>
+                  <strong class="text-sm text-bosque-800"
+                    >11.2% • 2 defectos</strong
+                  >
+                </div>
+              </div>
+
+              <div
+                class="bg-amber-50 border border-amber-200/80 rounded-xl p-3 text-xs text-cafe-900"
+              >
+                <span class="font-bold text-amber-800 block mb-0.5"
+                  >Notas de Cata Q-Grader:</span
+                >
+                "Jazmín, miel, lima, acidez brillante y postgusto prolongado."
+              </div>
+
+              <div
+                class="flex items-center justify-between pt-1 text-[11px] text-stone-500"
+              >
+                <span>Sellos: <strong>Orgánico USDA • Fairtrade</strong></span>
+                <span class="text-bosque-800 font-bold"
+                  >Verificado &check;</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN: ACTORES Y ARQUITECTURA POLÍGLOTA                             -->
+    <!-- ===================================================================== -->
+    <section id="propuesta" class="py-16 max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span
+          class="text-xs font-bold uppercase tracking-widest text-bosque-800"
+          >Ecosistema de Valor</span
+        >
+        <h2 class="font-serif text-3xl font-bold text-cafe-950 mt-1">
+          Tres actores conectados por una sola fuente de verdad
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div
+          class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition"
+        >
+          <div
+            class="w-10 h-10 rounded-xl bg-bosque-100 text-bosque-900 font-bold flex items-center justify-center mb-4"
+          >
+            01
+          </div>
+          <h3 class="font-bold text-lg text-cafe-950 mb-2">
+            Productores y Cooperativas
+          </h3>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Sustituyen cuadernos físicos por registros georreferenciados de
+            parcelas, altitudes, cosechas y procesos de beneficiado para
+            defender precios justos.
+          </p>
+        </div>
+        <div
+          class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition"
+        >
+          <div
+            class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 font-bold flex items-center justify-center mb-4"
+          >
+            02
+          </div>
+          <h3 class="font-bold text-lg text-cafe-950 mb-2">
+            Catadores Q-Graders
+          </h3>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Auditan la calidad física (humedad 9%–13%, conteo de defectos) y
+            sensorial bajo protocolo SCA con validaciones estrictas de esquema.
+          </p>
+        </div>
+        <div
+          class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition"
+        >
+          <div
+            class="w-10 h-10 rounded-xl bg-stone-200 text-cafe-900 font-bold flex items-center justify-center mb-4"
+          >
+            03
+          </div>
+          <h3 class="font-bold text-lg text-cafe-950 mb-2">
+            Tostadurías y Exportadores
+          </h3>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Escanean el código único del lote antes de cerrar contratos
+            internacionales, mitigando fraudes o mezclas con café comercial.
+          </p>
+        </div>
+      </div>
+
+      <!-- Banner de Arquitectura Políglota -->
+      <div
+        id="arquitectura"
+        class="bg-cafe-900 text-white rounded-3xl p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center shadow-xl"
+      >
+        <div>
+          <span
+            class="text-xs font-bold uppercase tracking-widest text-amber-400"
+            >Ingeniería de Datos Híbrida</span
+          >
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-1 mb-3">
+            ¿Por qué Persistencia Políglota?
+          </h3>
+          <p class="text-sm text-stone-300 leading-relaxed">
+            Separamos la carga transaccional crítica de las consultas públicas
+            masivas. Cada motor cumple el rol donde es más eficiente:
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white/10 border border-white/15 rounded-2xl p-4">
+            <div class="text-xs font-bold text-sky-300 uppercase mb-1">
+              Microsoft SQL Server
+            </div>
+            <div class="font-bold text-base mb-1">
+              Núcleo Transaccional ACID
+            </div>
+            <p class="text-xs text-stone-300">
+              12 tablas en 3FN, claves foráneas, <code>CHECK</code>, funciones
+              analíticas y procedimientos almacenados.
+            </p>
+          </div>
+          <div class="bg-white/10 border border-white/15 rounded-2xl p-4">
+            <div class="text-xs font-bold text-emerald-300 uppercase mb-1">
+              MongoDB Community
+            </div>
+            <div class="font-bold text-base mb-1">
+              Lectura Rápida QR (NoSQL)
+            </div>
+            <p class="text-xs text-stone-300">
+              Colecciones <code>ExpedienteLote</code> y
+              <code>FichaCalidad</code> con <code>$jsonSchema</code> y
+              agregaciones <code>$lookup</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- PLATAFORMA INTERACTIVA CONECTADA A AMBAS BASES DE DATOS               -->
+    <!-- ===================================================================== -->
+    <section
+      id="plataforma"
+      class="py-12 bg-stone-200/60 border-t border-stone-300/70"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Cabecera del Módulo Interactivo + Selector de Vistas -->
+        <div
+          class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-8"
+        >
+          <div>
+            <span
+              class="text-xs font-bold uppercase tracking-widest text-bosque-800"
+              >Entorno Conectado en Local</span
+            >
+            <h2 class="font-serif text-3xl font-bold text-cafe-950">
+              Explorador de Base de Datos en Vivo
+            </h2>
+          </div>
+
+          <nav
+            class="flex flex-wrap gap-2 bg-white p-1.5 rounded-2xl shadow-sm border border-stone-200"
+          >
+            <button
+              onclick="cambiarVista('qr')"
+              id="btn-qr"
+              class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-bosque-900 text-white transition"
+            >
+              1. Consulta QR (MongoDB)
+            </button>
+            <button
+              onclick="cambiarVista('operaciones')"
+              id="btn-operaciones"
+              class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-stone-600 hover:bg-stone-100 transition"
+            >
+              2. Registro ACID (SQL Server)
+            </button>
+            <button
+              onclick="cambiarVista('dashboard')"
+              id="btn-dashboard"
+              class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-stone-600 hover:bg-stone-100 transition"
+            >
+              3. Analítica Comercial (SQL)
+            </button>
+          </nav>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- VISTA 1: CONSULTA PÚBLICA DE TRAZABILIDAD (MONGODB)                 -->
+        <!-- =================================================================== -->
+        <div id="vista-qr" class="vista-panel">
+          <div
+            class="bg-white rounded-3xl shadow-sm border border-stone-200 p-6 sm:p-8 mb-6"
+          >
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-5">
+              <div>
+                <span
+                  class="inline-block bg-emerald-100 text-emerald-900 text-xs font-bold px-3 py-1 rounded-full mb-1.5"
+                >
+                  MongoDB • Agregación $lookup (ExpedienteLote + FichaCalidad)
+                </span>
+                <h3 class="text-xl font-bold text-cafe-950">
+                  Buscador de Expediente por Código Único
+                </h3>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input
+                type="text"
+                id="input-codigo-qr"
+                placeholder="Ej. TRZ-26-GSH-001"
+                class="flex-1 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-bosque-800 font-mono uppercase bg-cafe-50"
+              />
+              <button
+                onclick="buscarLoteQR()"
+                class="bg-bosque-900 hover:bg-bosque-800 text-white font-bold px-6 py-3 rounded-xl transition text-sm"
+              >
+                Consultar Documento
+              </button>
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center gap-2 text-xs">
+              <span class="text-stone-500 font-bold"
+                >Documentos disponibles en MongoDB:</span
+              >
+              <div id="chips-lotes" class="flex flex-wrap gap-2"></div>
+            </div>
+          </div>
+
+          <!-- Resultado del Expediente + QR Visual -->
+          <div
+            id="resultado-qr"
+            class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6"
+          >
+            <!-- Tarjeta 1: Origen + QR -->
+            <div
+              class="lg:col-span-4 bg-white rounded-3xl shadow-sm border border-stone-200 p-6 flex flex-col justify-between"
+            >
+              <div>
+                <div class="flex justify-between items-start gap-3 mb-4">
+                  <div>
+                    <span
+                      class="text-[11px] font-bold uppercase tracking-wider text-bosque-800"
+                      >Origen y Beneficiado</span
+                    >
+                    <div
+                      class="text-2xl font-extrabold text-cafe-950 font-mono mt-0.5"
+                      id="qr-codigo"
+                    >
+                      -
+                    </div>
+                    <div
+                      class="text-base font-bold text-amber-700"
+                      id="qr-variedad"
+                    >
+                      -
+                    </div>
+                  </div>
+                  <!-- QR Dinámico del Lote -->
+                  <img
+                    id="qr-imagen"
+                    src=""
+                    alt="QR Lote"
+                    class="w-16 h-16 rounded-xl border border-stone-200 p-1 bg-white shadow-sm"
+                  />
+                </div>
+
+                <dl class="space-y-3 text-sm border-t border-stone-100 pt-4">
+                  <div class="flex justify-between">
+                    <dt class="text-stone-500">ID Lote / Parcela:</dt>
+                    <dd class="font-bold" id="qr-ids">-</dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <dt class="text-stone-500">Peso Neto Lote:</dt>
+                    <dd class="font-bold" id="qr-peso">-</dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <dt class="text-stone-500">Método Beneficiado:</dt>
+                    <dd class="font-bold text-bosque-800" id="qr-proceso">-</dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <dt class="text-stone-500">Fermentación / Secado:</dt>
+                    <dd class="font-bold" id="qr-dias">-</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+
+            <!-- Tarjeta 2: Evaluación SCA -->
+            <div
+              class="lg:col-span-4 bg-white rounded-3xl shadow-sm border border-stone-200 p-6"
+            >
+              <span
+                class="text-[11px] font-bold uppercase tracking-wider text-amber-700"
+                >Ficha de Calidad SCA</span
+              >
+              <div class="flex items-baseline gap-2 my-2">
+                <span
+                  class="font-serif text-5xl font-extrabold text-bosque-900"
+                  id="qr-puntaje"
+                  >-</span
+                >
+                <span class="text-sm font-bold text-stone-400">/ 100 pts</span>
+              </div>
+              <p
+                class="text-sm italic text-cafe-900 bg-amber-50 border border-amber-200 rounded-2xl p-3.5 mb-4"
+                id="qr-notas"
+              >
+                -
+              </p>
+
+              <dl class="space-y-2.5 text-sm">
+                <div class="flex justify-between">
+                  <dt class="text-stone-500">Humedad Grano Verde:</dt>
+                  <dd class="font-bold" id="qr-humedad">-</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt class="text-stone-500">Defectos Físicos:</dt>
+                  <dd class="font-bold" id="qr-defectos">-</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt class="text-stone-500">Catador Certificado:</dt>
+                  <dd class="font-bold text-cafe-950" id="qr-catador">-</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Tarjeta 3: Certificaciones Embebidas -->
+            <div
+              class="lg:col-span-4 bg-white rounded-3xl shadow-sm border border-stone-200 p-6"
+            >
+              <span
+                class="text-[11px] font-bold uppercase tracking-wider text-bosque-800 block mb-3"
+                >Sellos de Sostenibilidad (Array Embebido)</span
+              >
+              <div id="qr-certificaciones" class="space-y-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- VISTA 2: PANEL DE REGISTRO OPERATIVO (SQL SERVER - PROCEDIMIENTOS)   -->
+        <!-- =================================================================== -->
+        <div id="vista-operaciones" class="vista-panel hidden">
+          <div
+            id="sql-alerta"
+            class="hidden mb-6 p-4 rounded-2xl text-sm font-bold border shadow-sm"
+          ></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Form 1 -->
+            <form
+              onsubmit="enviarParcela(event)"
+              class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200 space-y-4"
+            >
+              <div class="border-b border-stone-100 pb-3">
+                <span class="text-[11px] font-bold text-sky-700 uppercase"
+                  >SQL Server • Stored Procedure</span
+                >
+                <h3 class="font-bold text-lg text-cafe-950">
+                  1. Registrar Parcela
+                </h3>
+                <p class="text-xs text-stone-400 font-mono">
+                  EXEC sp_RegistrarNuevaParcela
+                </p>
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1"
+                  >ID Productor (1 - 20)</label
+                >
+                <input
+                  type="number"
+                  id="p-idprod"
+                  value="1"
+                  required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1"
+                  >Nombre de Finca / Parcela</label
+                >
+                <input
+                  type="text"
+                  id="p-nombre"
+                  placeholder="Ej. Finca Alto Amazonas"
+                  required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1"
+                  >Ubicación Geográfica</label
+                >
+                <input
+                  type="text"
+                  id="p-ubicacion"
+                  placeholder="Ej. Cajamarca, San Ignacio"
+                  required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                />
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold mb-1"
+                    >Altitud (&ge;1200 m)</label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    id="p-altitud"
+                    value="1750"
+                    required
+                    class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold mb-1">Hectáreas</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    id="p-hectareas"
+                    value="3.5"
+                    required
+                    class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-bosque-900 hover:bg-bosque-800 text-white font-bold py-3 rounded-xl text-sm transition"
+              >
+                Ejecutar Procedimiento
+              </button>
+            </form>
+
+            <!-- Form 2 -->
+            <form
+              onsubmit="enviarCata(event)"
+              class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200 space-y-4"
+            >
+              <div class="border-b border-stone-100 pb-3">
+                <span class="text-[11px] font-bold text-sky-700 uppercase"
+                  >SQL Server • Stored Procedure</span
+                >
+                <h3 class="font-bold text-lg text-cafe-950">
+                  2. Registrar Cata SCA
+                </h3>
+                <p class="text-xs text-stone-400 font-mono">
+                  EXEC sp_RegistrarEvaluacionCata
+                </p>
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1"
+                  >ID Lote (1 - 20)</label
+                >
+                <input
+                  type="number"
+                  id="c-idlote"
+                  value="1"
+                  required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1"
+                  >Puntaje SCA (0.00 - 100.00)</label
+                >
+                <input
+                  type="number"
+                  step="0.01"
+                  id="c-puntaje"
+                  value="88.75"
+                  required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1"
+                  >Notas Sensoriales</label
+                >
+                <input
+                  type="text"
+                  id="c-notas"
+                  placeholder="Ej. Flor de azahar, miel, acidez cítrica"
+                  required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1"
+                  >Catador Q-Grader</label
+                >
+                <input
+                  type="text"
+                  id="c-catador"
+                  value="Q-Grader Mario Vega"
+                  required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-bosque-900 hover:bg-bosque-800 text-white font-bold py-3 rounded-xl text-sm transition"
+              >
+                Guardar Evaluación SCA
+              </button>
+            </form>
+
+            <!-- Form 3 -->
+            <form
+              onsubmit="enviarVenta(event)"
+              class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200 space-y-4"
+            >
+              <div class="border-b border-stone-100 pb-3">
+                <span class="text-[11px] font-bold text-amber-700 uppercase"
+                  >SQL Server • Transacción ACID</span
+                >
+                <h3 class="font-bold text-lg text-cafe-950">
+                  3. Registrar Venta
+                </h3>
+                <p class="text-xs text-stone-400 font-mono">
+                  EXEC sp_RegistrarTransaccionVenta
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold mb-1"
+                    >ID Lote (1 - 20)</label
+                  >
+                  <input
+                    type="number"
+                    id="v-idlote"
+                    value="1"
+                    required
+                    class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold mb-1"
+                    >ID Comprador (1 - 20)</label
+                  >
+                  <input
+                    type="number"
+                    id="v-idcomp"
+                    value="1"
+                    required
+                    class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1"
+                  >Fecha de Venta</label
+                >
+                <input
+                  type="date"
+                  id="v-fecha"
+                  value="2026-11-20"
+                  required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                />
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold mb-1"
+                    >Kilos Vendidos</label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    id="v-kilos"
+                    value="150"
+                    required
+                    class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold mb-1"
+                    >Precio / Kg (USD)</label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    id="v-precio"
+                    value="8.90"
+                    required
+                    class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-amber-500 hover:bg-amber-400 text-bosque-950 font-extrabold py-3 rounded-xl text-sm transition"
+              >
+                Liquidar Venta USD
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- VISTA 3: DASHBOARD ANALÍTICO Y COMERCIAL (CONSULTAS AVANZADAS SQL)  -->
+        <!-- =================================================================== -->
+        <div id="vista-dashboard" class="vista-panel hidden">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div
+              class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm"
+            >
+              <div class="text-xs text-stone-500 font-bold">
+                Facturación Total
+              </div>
+              <div
+                class="font-serif text-3xl font-extrabold text-bosque-900 mt-1"
+                id="kpi-facturacion"
+              >
+                $0.00
+              </div>
+            </div>
+            <div
+              class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm"
+            >
+              <div class="text-xs text-stone-500 font-bold">
+                Volumen Exportado
+              </div>
+              <div
+                class="font-serif text-3xl font-extrabold text-cafe-950 mt-1"
+                id="kpi-kilos"
+              >
+                0 kg
+              </div>
+            </div>
+            <div
+              class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm"
+            >
+              <div class="text-xs text-stone-500 font-bold">
+                Contratos Cerrados
+              </div>
+              <div
+                class="font-serif text-3xl font-extrabold text-cafe-950 mt-1"
+                id="kpi-ventas"
+              >
+                0
+              </div>
+            </div>
+            <div
+              class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm"
+            >
+              <div class="text-xs text-stone-500 font-bold">
+                Parcelas Georreferenciadas
+              </div>
+              <div
+                class="font-serif text-3xl font-extrabold text-amber-600 mt-1"
+                id="kpi-parcelas"
+              >
+                0
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div
+              class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm"
+            >
+              <div
+                class="p-5 bg-cafe-50 border-b border-stone-200 font-bold text-sm text-cafe-950 flex justify-between items-center"
+              >
+                <span>Ranking de Rentabilidad por Variedad (DENSE_RANK)</span>
+                <span class="text-[11px] font-mono text-stone-400"
+                  >SQL Server</span
+                >
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                  <thead
+                    class="bg-stone-100/70 text-xs uppercase text-stone-500"
+                  >
+                    <tr>
+                      <th class="px-5 py-3">Rank</th>
+                      <th class="px-5 py-3">Variedad</th>
+                      <th class="px-5 py-3">SCA</th>
+                      <th class="px-5 py-3">Precio/Kg</th>
+                      <th class="px-5 py-3">Ingresos USD</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    id="tabla-variedades"
+                    class="divide-y divide-stone-100"
+                  ></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm"
+            >
+              <div
+                class="p-5 bg-cafe-50 border-b border-stone-200 font-bold text-sm text-cafe-950 flex justify-between items-center"
+              >
+                <span>Top Productores por Rendimiento (&gt; 200 kg/ha)</span>
+                <span class="text-[11px] font-mono text-stone-400"
+                  >SQL Server</span
+                >
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                  <thead
+                    class="bg-stone-100/70 text-xs uppercase text-stone-500"
+                  >
+                    <tr>
+                      <th class="px-5 py-3">Productor</th>
+                      <th class="px-5 py-3">Hectáreas</th>
+                      <th class="px-5 py-3">Cosecha (Kg)</th>
+                      <th class="px-5 py-3">Kg / Ha</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    id="tabla-productores"
+                    class="divide-y divide-stone-100"
+                  ></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- FOOTER INSTITUCIONAL UPC                                              -->
+    <!-- ===================================================================== -->
+    <footer
+      class="bg-cafe-950 text-stone-400 py-10 text-xs border-t border-white/10"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <div>
+          <strong class="text-white">Specialty Trace Platform</strong> •
+          Proyecto Final Base de Datos (1ASI0787 - UPC)
+        </div>
+        <div>Equipo: Calixto • López • Tello • De La Cruz • Cotrina</div>
+      </div>
+    </footer>
+
+    <script>
+      const API_URL = "http://127.0.0.1:8000/api";
+
+      function cambiarVista(vista) {
+        document
+          .querySelectorAll(".vista-panel")
+          .forEach((el) => el.classList.add("hidden"));
+        document.getElementById(`vista-${vista}`).classList.remove("hidden");
+
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("bg-bosque-900", "text-white");
+          btn.classList.add("text-stone-600");
+        });
+        const activeBtn = document.getElementById(`btn-${vista}`);
+        activeBtn.classList.add("bg-bosque-900", "text-white");
+        activeBtn.classList.remove("text-stone-600");
+
+        if (vista === "dashboard") cargarDashboard();
+      }
+
+      async function cargarChipsLotes() {
+        try {
+          const res = await fetch(`${API_URL}/mongo/lotes`);
+          const lotes = await res.json();
+          const cont = document.getElementById("chips-lotes");
+          cont.innerHTML = lotes
+            .map(
+              (l) => `
+          <button onclick="seleccionarLote('${l.CodigoTrazabilidad}')"
+            class="bg-cafe-50 hover:bg-bosque-100 text-cafe-900 hover:text-bosque-950 border border-stone-300 px-3 py-1.5 rounded-xl font-mono transition font-semibold">
+            ${l.CodigoTrazabilidad} (${l.Variedad})
+          </button>
+        `,
+            )
+            .join("");
+          if (lotes.length > 0) seleccionarLote(lotes[0].CodigoTrazabilidad);
+        } catch (err) {
+          console.error("Error cargando lotes desde MongoDB:", err);
+        }
+      }
+
+      function seleccionarLote(codigo) {
+        document.getElementById("input-codigo-qr").value = codigo;
+        buscarLoteQR();
+      }
+
+      async function buscarLoteQR() {
+        const codigo = document
+          .getElementById("input-codigo-qr")
+          .value.trim()
+          .toUpperCase();
+        if (!codigo) return;
+
+        try {
+          const res = await fetch(`${API_URL}/mongo/trazabilidad/${codigo}`);
+          if (!res.ok) throw new Error("Lote no encontrado");
+          const data = await res.json();
+
+          document.getElementById("resultado-qr").classList.remove("hidden");
+          document.getElementById("qr-codigo").textContent =
+            data.CodigoTrazabilidad;
+          document.getElementById("qr-variedad").textContent =
+            `Variedad ${data.Variedad}`;
+          document.getElementById("qr-ids").textContent =
+            `Lote #${data.IdLote} • Parcela #${data.IdParcela}`;
+          document.getElementById("qr-peso").textContent =
+            `${data.PesoTotalKg} kg`;
+          document.getElementById("qr-proceso").textContent =
+            data.ProcesoBeneficiado?.TipoProceso || "-";
+          document.getElementById("qr-dias").textContent =
+            `${data.ProcesoBeneficiado?.DuracionDias || 0} días`;
+
+          // Genera imagen QR visual para el código consultado
+          document.getElementById("qr-imagen").src =
+            `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SPECIALTY-TRACE-${data.CodigoTrazabilidad}`;
+
+          const cal = data.Calidad || {};
+          document.getElementById("qr-puntaje").textContent = cal.PuntajeSCA
+            ? cal.PuntajeSCA.toFixed(2)
+            : "N/A";
+          document.getElementById("qr-notas").textContent = cal.NotasSensoriales
+            ? `"${cal.NotasSensoriales}"`
+            : "Sin cata registrada";
+          document.getElementById("qr-humedad").textContent =
+            cal.PorcentajeHumedad ? `${cal.PorcentajeHumedad}%` : "-";
+          document.getElementById("qr-defectos").textContent =
+            cal.CantidadDefectos !== undefined
+              ? `${cal.CantidadDefectos} defectos`
+              : "-";
+          document.getElementById("qr-catador").textContent =
+            cal.CatadorResponsable || "-";
+
+          const certs = data.Certificaciones || [];
+          document.getElementById("qr-certificaciones").innerHTML = certs.length
+            ? certs
+                .map(
+                  (c) => `
+              <div class="p-3.5 rounded-2xl bg-bosque-100/70 border border-emerald-200">
+                <div class="font-bold text-bosque-950 text-sm">${c.NombreSello}</div>
+                <div class="text-xs text-bosque-800">Emisor: ${c.EntidadEmisora}</div>
+              </div>
+            `,
+                )
+                .join("")
+            : `<p class="text-xs text-stone-400">Sin certificaciones registradas.</p>`;
+        } catch (err) {
+          alert(
+            "No se encontró el código en MongoDB. Verifica el código o la conexión.",
+          );
+        }
+      }
+
+      function mostrarAlertaSQL(mensaje, esError = false) {
+        const alerta = document.getElementById("sql-alerta");
+        alerta.classList.remove(
+          "hidden",
+          "bg-emerald-50",
+          "text-emerald-900",
+          "border-emerald-300",
+          "bg-red-50",
+          "text-red-900",
+          "border-red-300",
+        );
+        if (esError) {
+          alerta.classList.add("bg-red-50", "text-red-900", "border-red-300");
+          alerta.textContent = `Error de Integridad SQL Server: ${mensaje}`;
+        } else {
+          alerta.classList.add(
+            "bg-emerald-50",
+            "text-emerald-900",
+            "border-emerald-300",
+          );
+          alerta.textContent = `Transacción Exitosa en SQL Server: ${mensaje}`;
+        }
+      }
+
+      async function enviarParcela(e) {
+        e.preventDefault();
+        const payload = {
+          IdProductor: parseInt(document.getElementById("p-idprod").value),
+          Nombre: document.getElementById("p-nombre").value,
+          UbicacionGeo: document.getElementById("p-ubicacion").value,
+          Altitud: parseFloat(document.getElementById("p-altitud").value),
+          Hectareas: parseFloat(document.getElementById("p-hectareas").value),
+        };
+        const res = await fetch(`${API_URL}/sql/parcelas`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        mostrarAlertaSQL(res.ok ? data.mensaje : data.detail, !res.ok);
+      }
+
+      async function enviarCata(e) {
+        e.preventDefault();
+        const payload = {
+          IdLote: parseInt(document.getElementById("c-idlote").value),
+          PuntajeSCA: parseFloat(document.getElementById("c-puntaje").value),
+          NotasSensoriales: document.getElementById("c-notas").value,
+          CatadorResponsable: document.getElementById("c-catador").value,
+        };
+        const res = await fetch(`${API_URL}/sql/catas`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        mostrarAlertaSQL(res.ok ? data.mensaje : data.detail, !res.ok);
+      }
+
+      async function enviarVenta(e) {
+        e.preventDefault();
+        const payload = {
+          IdLote: parseInt(document.getElementById("v-idlote").value),
+          IdComprador: parseInt(document.getElementById("v-idcomp").value),
+          FechaVenta: document.getElementById("v-fecha").value,
+          CantidadKgVendidos: parseFloat(
+            document.getElementById("v-kilos").value,
+          ),
+          PrecioKiloUSD: parseFloat(document.getElementById("v-precio").value),
+        };
+        const res = await fetch(`${API_URL}/sql/ventas`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        mostrarAlertaSQL(res.ok ? data.mensaje : data.detail, !res.ok);
+      }
+
+      async function cargarDashboard() {
+        try {
+          const res = await fetch(`${API_URL}/sql/dashboard`);
+          const data = await res.json();
+
+          document.getElementById("kpi-facturacion").textContent =
+            `$${data.kpis.facturacion_usd.toLocaleString("en-US", { minimumFractionDigits: 2 })}`;
+          document.getElementById("kpi-kilos").textContent =
+            `${data.kpis.kilos_exportados.toLocaleString("en-US")} kg`;
+          document.getElementById("kpi-ventas").textContent =
+            data.kpis.total_ventas;
+          document.getElementById("kpi-parcelas").textContent =
+            data.kpis.total_parcelas;
+
+          document.getElementById("tabla-variedades").innerHTML =
+            data.rentabilidad_variedad
+              .map(
+                (v) => `
+          <tr class="hover:bg-cafe-50/70">
+            <td class="px-5 py-3 font-extrabold text-amber-700">#${v.rank}</td>
+            <td class="px-5 py-3 font-bold text-cafe-950">${v.variedad}</td>
+            <td class="px-5 py-3">${v.sca} pts</td>
+            <td class="px-5 py-3">$${v.precio_kg.toFixed(2)}</td>
+            <td class="px-5 py-3 font-extrabold text-bosque-900">$${v.ingresos.toFixed(2)}</td>
+          </tr>
+        `,
+              )
+              .join("");
+
+          document.getElementById("tabla-productores").innerHTML =
+            data.rendimiento_productores
+              .map(
+                (p) => `
+          <tr class="hover:bg-cafe-50/70">
+            <td class="px-5 py-3 font-bold text-cafe-950">${p.productor}</td>
+            <td class="px-5 py-3">${p.hectareas} ha</td>
+            <td class="px-5 py-3">${p.kg} kg</td>
+            <td class="px-5 py-3 font-extrabold text-bosque-900">${p.rendimiento} kg/ha</td>
+          </tr>
+        `,
+              )
+              .join("");
+        } catch (err) {
+          console.error("Error cargando dashboard:", err);
+        }
+      }
+
+      cargarChipsLotes();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+{
+  "modelName": "SpecialtyTraceDB",
+  "collections": [
+    {
+      "collectionName": "ExpedienteLote",
+      "type": "object",
+      "properties": [
+        {
+          "name": "IdLote",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "200bd437-c558-44dd-9286-95e9e143e540"
+        },
+        {
+          "name": "CodigoTrazabilidad",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "aae1f3d1-6c1c-436f-a5db-a2033f8498be",
+          "error": {}
+        },
+        {
+          "name": "IdParcela",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "dfbb575c-bb1f-4efb-9747-5752230cf015"
+        },
+        {
+          "name": "Variedad",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "ea7e55cb-6c2c-49b0-aaa1-03a6d8d7ab2c",
+          "error": {}
+        },
+        {
+          "name": "PesoTotalKg",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "f9bce110-7b6b-480f-9f48-429db90cbd2e",
+          "mode": "double",
+          "error": {}
+        },
+        {
+          "name": "ProcesoBeneficiado",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "document",
+          "properties": [
+            {
+              "name": "TipoProceso",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "string",
+              "GUID": "1a2230df-cd5d-41ea-9c76-3d6bcc01b070",
+              "error": {}
+            },
+            {
+              "name": "DuracionDias",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "numeric",
+              "GUID": "dcebeece-058e-423c-b70d-f9e635dff62c",
+              "error": {}
+            }
+          ],
+          "additionalProperties": false,
+          "error": {},
+          "GUID": "568c2a86-5dfa-4b00-882a-dc40952cb296"
+        },
+        {
+          "name": "Certificaciones",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "array",
+          "properties": [
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "string",
+              "GUID": "01c8ed5a-e3d3-4247-949b-43c32383090c",
+              "arrayItem": true,
+              "displayName": "NombreSello",
+              "error": {}
+            },
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "string",
+              "GUID": "de863e41-f330-4295-a358-81890c56de9b",
+              "arrayItem": true,
+              "displayName": "EntidadEmisora",
+              "error": {}
+            }
+          ],
+          "additionalItems": true,
+          "error": {},
+          "GUID": "f9d96cc6-a91e-4d9a-903e-7e935c257e4a"
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "dba1e0f2-f3ec-41be-9f25-4028f4d2cd83"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "bucketId": "e003bc2d-ec16-4963-a490-279735b37e86"
+    },
+    {
+      "collectionName": "FichaCalidad",
+      "type": "object",
+      "properties": [
+        {
+          "name": "IdControl",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "ed6854e2-2ac5-4803-89f2-ecda020f2750"
+        },
+        {
+          "name": "IdLote",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "ba9bc306-fdca-4e90-ade2-63ba6d81065a"
+        },
+        {
+          "name": "CodigoTrazabilidad",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "0d03ce04-fbf2-4fec-b1a0-5663b8ca8cb5",
+          "error": {}
+        },
+        {
+          "name": "PorcentajeHumedad",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "9f8b6f84-4874-4ad7-a69a-81d7872c4b9d",
+          "mode": "double",
+          "error": {}
+        },
+        {
+          "name": "CantidadDefectos",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "b6c6f4cf-0cac-4809-9e55-a527544a8a3c"
+        },
+        {
+          "name": "PuntajeSCA",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "3d397b13-29d4-4bd0-b075-5efe287d6d5e",
+          "mode": "double",
+          "error": {}
+        },
+        {
+          "name": "NotasSensoriales",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "e4cec36b-df5f-49b7-86e2-9257bc6984c4",
+          "error": {}
+        },
+        {
+          "name": "CatadorResponsable",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "a4d9c644-89ea-4b48-9de1-6291c5cfc020",
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "e0c3e19b-94ab-4699-8cbc-3e5e7659aaaa"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "dc0790e6-d5b2-48f1-9260-f7108f24b6db",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "bucketId": "e003bc2d-ec16-4963-a490-279735b37e86"
+    }
+  ],
+  "buckets": [
+    {
+      "name": "SpecialtyTraceDB",
+      "type": "bucket",
+      "collectionIds": [
+        "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+        "dc0790e6-d5b2-48f1-9260-f7108f24b6db"
+      ],
+      "backgroundColor": {
+        "r": 129,
+        "g": 212,
+        "b": 250,
+        "a": 1
+      },
+      "show": true,
+      "isActivated": true,
+      "GUID": "e003bc2d-ec16-4963-a490-279735b37e86",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    }
+  ],
+  "views": [],
+  "relationships": [],
+  "users": [],
+  "diagramViews": [],
+  "idToNameHashTable": {
+    "e003bc2d-ec16-4963-a490-279735b37e86": "SpecialtyTraceDB",
+    "3513e4a5-37b1-4dd6-bf73-49f4e364707a": "ExpedienteLote",
+    "200bd437-c558-44dd-9286-95e9e143e540": "IdLote",
+    "aae1f3d1-6c1c-436f-a5db-a2033f8498be": "CodigoTrazabilidad",
+    "dfbb575c-bb1f-4efb-9747-5752230cf015": "IdParcela",
+    "ea7e55cb-6c2c-49b0-aaa1-03a6d8d7ab2c": "Variedad",
+    "f9bce110-7b6b-480f-9f48-429db90cbd2e": "PesoTotalKg",
+    "568c2a86-5dfa-4b00-882a-dc40952cb296": "ProcesoBeneficiado",
+    "1a2230df-cd5d-41ea-9c76-3d6bcc01b070": "TipoProceso",
+    "dcebeece-058e-423c-b70d-f9e635dff62c": "DuracionDias",
+    "f9d96cc6-a91e-4d9a-903e-7e935c257e4a": "Certificaciones",
+    "dc0790e6-d5b2-48f1-9260-f7108f24b6db": "FichaCalidad",
+    "ed6854e2-2ac5-4803-89f2-ecda020f2750": "IdControl",
+    "ba9bc306-fdca-4e90-ade2-63ba6d81065a": "IdLote",
+    "0d03ce04-fbf2-4fec-b1a0-5663b8ca8cb5": "CodigoTrazabilidad",
+    "9f8b6f84-4874-4ad7-a69a-81d7872c4b9d": "PorcentajeHumedad",
+    "b6c6f4cf-0cac-4809-9e55-a527544a8a3c": "CantidadDefectos",
+    "3d397b13-29d4-4bd0-b075-5efe287d6d5e": "PuntajeSCA",
+    "e4cec36b-df5f-49b7-86e2-9257bc6984c4": "NotasSensoriales",
+    "a4d9c644-89ea-4b48-9de1-6291c5cfc020": "CatadorResponsable"
+  },
+  "definitions": {
+    "type": "definitions",
+    "properties": [],
+    "GUID": "50659af6-f2e0-44f4-8a3d-85c2dbea200d"
+  },
+  "polyglotDefinitions": {
+    "type": "polyglotDefinitions",
+    "properties": [],
+    "GUID": "180d70f1-6f36-466f-b744-673201ec971b"
+  },
+  "externalDefinitions": {
+    "type": "externalDefinitions",
+    "properties": [],
+    "GUID": "0dd9d3c8-6fe9-4879-a5c6-a603c11ac947"
+  },
+  "sources": [],
+  "decorativeSymbols": [],
+  "businessGlossaries": [],
+  "businessGlossaryTerms": [],
+  "dbVersion": "v8.x",
+  "dbVendor": "MongoDB",
+  "appTarget": "MONGODB",
+  "creationTS": "2026-10-28T13:12:25.184Z",
+  "GUID": "4326f604-7314-44be-91ef-41adec9fc4d1",
+  "isLineageEnabled": false,
+  "hackoladeMeta": {
+    "validationErrors": {
+      "modelName": false
+    }
+  },
+  "lastModifTS": "2026-10-28T14:12:10.038Z",
+  "persistenceSchemaVersion": "8",
+  "isCreatedByPlugin": true,
+  "pluginInformation": {
+    "pluginEngineVersion": "1.0.0"
+  },
+  "applicationInformation": {
+    "version": "8.13.6"
+  },
+  "settings": {
+    "centralPane": {
+      "dbLevel": {
+        "erd": [
+          {
+            "GUID": "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+            "x": 1409.0000000000005,
+            "y": 1125.3333333333333,
+            "width": 268,
+            "height": 230,
+            "color": {}
+          },
+          {
+            "GUID": "dc0790e6-d5b2-48f1-9260-f7108f24b6db",
+            "x": 1068.9999999999998,
+            "y": 1120.333333333333,
+            "width": 258,
+            "height": 176,
+            "color": {}
+          }
+        ],
+        "erdDefinitions": {
+          "erd": [],
+          "rootPath": [],
+          "entities": [],
+          "decorativeSymbols": []
+        },
+        "buckets": [
+          {
+            "x": 1004.9999999999998,
+            "y": 1056.333333333333,
+            "GUID": "e003bc2d-ec16-4963-a490-279735b37e86"
+          }
+        ],
+        "collapsedNodes": [],
+        "activeRelationship": "",
+        "activeRelationshipFields": {
+          "childField": [],
+          "parentField": []
+        },
+        "selectedCollections": [],
+        "displayColorPicker": false,
+        "graphView": {
+          "erd": [],
+          "buckets": [],
+          "decorativeSymbols": [],
+          "forceLayout": true,
+          "defaultLinkLength": 300,
+          "options": []
+        },
+        "diagramViews": [],
+        "decorativeSymbols": [],
+        "nestedCollectionsLayout": "horizontal",
+        "options": [],
+        "relationshipUpdateDisabled": false
+      },
+      "collectionLevel": {},
+      "changed": false
+    },
+    "dtDiagram": {
+      "collapsedNodes": [],
+      "shouldDistributeCollections": false
+    }
+  }
+}
