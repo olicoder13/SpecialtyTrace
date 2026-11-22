@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import pyodbc
 from pymongo import MongoClient
 import os
+from datetime import date
 
 app = FastAPI(title="Specialty Trace API - Persistencia Políglota")
 
@@ -57,7 +58,7 @@ class CataCreate(BaseModel):
 class VentaCreate(BaseModel):
     IdLote: int
     IdComprador: int
-    FechaVenta: str
+    FechaVenta: date
     CantidadKgVendidos: float
     PrecioKiloUSD: float
 
@@ -178,6 +179,12 @@ def registrar_cata(data: CataCreate):
 @app.post("/api/sql/ventas")
 def registrar_venta(data: VentaCreate):
     """Ejecuta sp_RegistrarTransaccionVenta en SQL Server."""
+    if data.FechaVenta > date.today():
+        raise HTTPException(
+            status_code=400,
+            detail="La fecha de venta no puede ser posterior a la fecha actual.",
+        )
+
     try:
         conn = get_sql_connection()
         cursor = conn.cursor()

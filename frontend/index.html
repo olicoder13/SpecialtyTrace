@@ -856,7 +856,6 @@
                 <input
                   type="date"
                   id="v-fecha"
-                  value="2026-11-20"
                   required
                   class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm"
                 />
@@ -1261,10 +1260,27 @@
 
       async function enviarVenta(e) {
         e.preventDefault();
+        const fechaVenta = document.getElementById("v-fecha").value;
+        const hoy = new Date();
+        const fechaActual = [
+          hoy.getFullYear(),
+          String(hoy.getMonth() + 1).padStart(2, "0"),
+          String(hoy.getDate()).padStart(2, "0"),
+        ].join("-");
+
+        if (!fechaVenta) {
+          mostrarAlertaSQL("Debe indicar la fecha de la venta.", true);
+          return;
+        }
+        if (fechaVenta > fechaActual) {
+          mostrarAlertaSQL("La fecha de venta no puede ser posterior a la fecha actual.", true);
+          return;
+        }
+
         const payload = {
           IdLote: parseInt(document.getElementById("v-idlote").value),
           IdComprador: parseInt(document.getElementById("v-idcomp").value),
-          FechaVenta: document.getElementById("v-fecha").value,
+          FechaVenta: fechaVenta,
           CantidadKgVendidos: parseFloat(
             document.getElementById("v-kilos").value,
           ),
@@ -1324,6 +1340,18 @@
         } catch (err) {
           console.error("Error cargando dashboard:", err);
         }
+      }
+
+      const fechaVentaInput = document.getElementById("v-fecha");
+      if (fechaVentaInput) {
+        const hoy = new Date();
+        const fechaActual = [
+          hoy.getFullYear(),
+          String(hoy.getMonth() + 1).padStart(2, "0"),
+          String(hoy.getDate()).padStart(2, "0"),
+        ].join("-");
+        fechaVentaInput.max = fechaActual;
+        fechaVentaInput.value = fechaActual;
       }
 
       cargarChipsLotes();

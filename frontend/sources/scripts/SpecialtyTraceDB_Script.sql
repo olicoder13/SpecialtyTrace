@@ -554,6 +554,12 @@ CREATE OR ALTER PROCEDURE sp_RegistrarEvaluacionCata
 AS
 BEGIN
     SET NOCOUNT ON;
+    IF @FechaVenta > CAST(GETDATE() AS DATE)
+    BEGIN
+        RAISERROR('La fecha de venta no puede ser posterior a la fecha actual.', 16, 1);
+        RETURN;
+    END
+
     IF NOT EXISTS (SELECT 1 FROM Lote WHERE IdLote = @IdLote)
     BEGIN
         RAISERROR('El lote indicado no existe.', 16, 1);

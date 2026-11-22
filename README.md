@@ -22,6 +22,7 @@ Permite consultar expedientes de lotes por código, registrar parcelas, evaluaci
 - Dashboard con ventas, rentabilidad por variedad y rendimiento de productores.
 - Interfaz responsive desarrollada en HTML, Tailwind CSS y JavaScript.
 - Diagramas lógico y físico del modelo de datos.
+- Validación de ventas: la fecha no puede ser posterior a la fecha actual.
 
 ## Arquitectura
 
