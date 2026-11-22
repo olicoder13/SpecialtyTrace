@@ -4,6 +4,16 @@
 
 Permite consultar expedientes de lotes por código, registrar parcelas, evaluaciones de cata y ventas con procedimientos almacenados, y visualizar indicadores analíticos de variedad y rentabilidad.
 
+## Vista previa
+
+![Pantalla principal de Specialty Trace](frontend/sources/images/main-screen.png)
+
+| MongoDB | SQL Server |
+|---|---|
+| ![Consulta MongoDB](frontend/sources/images/mongodb-screen.png) | ![Operaciones SQL Server](frontend/sources/images/sqlserver-screen.png) |
+
+![Registro de operaciones](frontend/sources/images/form-screen.png)
+
 ## Características
 
 - Consulta rápida de lotes y trazabilidad desde MongoDB.
