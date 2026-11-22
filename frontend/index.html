@@ -455,6 +455,78 @@
             </div>
           </div>
 
+          <form
+            id="form-mongo-lote"
+            onsubmit="crearExpedienteMongo(event)"
+            class="bg-white rounded-3xl shadow-sm border border-emerald-200 p-6 sm:p-8 mb-6"
+          >
+            <div id="mongo-alerta" class="hidden mb-5 p-4 rounded-2xl text-sm font-bold border"></div>
+
+            <div class="flex items-center gap-3 mb-5">
+              <span class="inline-block bg-emerald-100 text-emerald-900 text-xs font-bold px-3 py-1 rounded-full">
+                MongoDB • Documento
+              </span>
+              <h3 class="text-xl font-bold text-cafe-950">Registrar Expediente de Lote</h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <label class="block text-xs font-bold mb-1">ID Lote</label>
+                <input id="m-id-lote" type="number" min="1" value="11" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Código Trazabilidad</label>
+                <input id="m-codigo" type="text" placeholder="TRZ-26-PCH-011" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm font-mono uppercase" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">ID Parcela</label>
+                <input id="m-id-parcela" type="number" min="1" value="11" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Variedad</label>
+                <input id="m-variedad" type="text" placeholder="Pache" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Peso (kg)</label>
+                <input id="m-peso" type="number" step="0.01" min="0.01" value="250" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Proceso</label>
+                <select id="m-proceso"
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm">
+                  <option value="Lavado">Lavado</option>
+                  <option value="Natural">Natural</option>
+                  <option value="Honey">Honey</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Duración (días)</label>
+                <input id="m-duracion" type="number" min="1" value="15" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Sello de certificación</label>
+                <input id="m-certificacion" type="text" placeholder="Orgánico USDA"
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-bold mb-1">Entidad emisora</label>
+                <input id="m-entidad" type="text" placeholder="USDA"
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+            </div>
+
+            <button type="submit"
+              class="mt-5 w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition">
+              Crear Documento en MongoDB
+            </button>
+          </form>
+
           <!-- Resultado del Expediente + QR Visual -->
           <div
             id="resultado-qr"
@@ -1015,6 +1087,51 @@
       function seleccionarLote(codigo) {
         document.getElementById("input-codigo-qr").value = codigo;
         buscarLoteQR();
+      }
+
+      async function crearExpedienteMongo(e) {
+        e.preventDefault();
+        const alerta = document.getElementById("mongo-alerta");
+        const sello = document.getElementById("m-certificacion").value.trim();
+        const entidad = document.getElementById("m-entidad").value.trim();
+        const certificaciones =
+          sello || entidad
+            ? [{ NombreSello: sello || "Sin especificar", EntidadEmisora: entidad || "Sin especificar" }]
+            : [];
+
+        const payload = {
+          IdLote: Number(document.getElementById("m-id-lote").value),
+          CodigoTrazabilidad: document.getElementById("m-codigo").value.trim().toUpperCase(),
+          IdParcela: Number(document.getElementById("m-id-parcela").value),
+          Variedad: document.getElementById("m-variedad").value.trim(),
+          PesoTotalKg: Number(document.getElementById("m-peso").value),
+          ProcesoBeneficiado: {
+            TipoProceso: document.getElementById("m-proceso").value,
+            DuracionDias: Number(document.getElementById("m-duracion").value),
+          },
+          Certificaciones: certificaciones,
+        };
+
+        alerta.classList.remove("hidden", "bg-emerald-50", "border-emerald-300", "text-emerald-900", "bg-red-50", "border-red-300", "text-red-900");
+
+        try {
+          const res = await fetch(`${API_URL}/mongo/lotes`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.detail || "No se pudo crear el documento");
+
+          alerta.textContent = data.mensaje;
+          alerta.classList.add("bg-emerald-50", "border-emerald-300", "text-emerald-900");
+          document.getElementById("form-mongo-lote").reset();
+          await cargarChipsLotes();
+          seleccionarLote(payload.CodigoTrazabilidad);
+        } catch (err) {
+          alerta.textContent = err.message;
+          alerta.classList.add("bg-red-50", "border-red-300", "text-red-900");
+        }
       }
 
       async function buscarLoteQR() {

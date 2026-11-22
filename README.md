@@ -143,6 +143,7 @@ specialty-trace-app/
 |---|---|---|
 | `GET` | `/api/mongo/lotes` | Lista códigos de trazabilidad disponibles |
 | `GET` | `/api/mongo/trazabilidad/{codigo}` | Obtiene expediente consolidado del lote |
+| `POST` | `/api/mongo/lotes` | Crea un nuevo expediente documental |
 | `POST` | `/api/sql/parcelas` | Registra una parcela |
 | `POST` | `/api/sql/catas` | Registra una evaluación sensorial |
 | `POST` | `/api/sql/ventas` | Registra una venta |

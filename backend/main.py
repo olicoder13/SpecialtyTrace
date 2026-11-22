@@ -61,6 +61,23 @@ class VentaCreate(BaseModel):
     CantidadKgVendidos: float
     PrecioKiloUSD: float
 
+class ProcesoBeneficiadoCreate(BaseModel):
+    TipoProceso: str
+    DuracionDias: int
+
+class CertificacionCreate(BaseModel):
+    NombreSello: str
+    EntidadEmisora: str
+
+class ExpedienteMongoCreate(BaseModel):
+    IdLote: int
+    CodigoTrazabilidad: str
+    IdParcela: int
+    Variedad: str
+    PesoTotalKg: float
+    ProcesoBeneficiado: ProcesoBeneficiadoCreate
+    Certificaciones: list[CertificacionCreate] = []
+
 # ==========================================
 # VISTA 1: ENDPOINTS MONGODB (LECTURA RÁPIDA QR)
 # ==========================================
@@ -90,6 +107,31 @@ def obtener_expediente_qr(codigo: str):
     if not resultado:
         raise HTTPException(status_code=404, detail="Código de trazabilidad no encontrado en MongoDB.")
     return resultado[0]
+
+@app.post("/api/mongo/lotes", status_code=201)
+def crear_expediente_mongo(data: ExpedienteMongoCreate):
+    """Crea un nuevo documento ExpedienteLote en MongoDB."""
+    codigo = data.CodigoTrazabilidad.strip().upper()
+    if not codigo:
+        raise HTTPException(status_code=400, detail="El código de trazabilidad no puede estar vacío.")
+
+    if data.ProcesoBeneficiado.TipoProceso not in ("Lavado", "Natural", "Honey"):
+        raise HTTPException(status_code=400, detail="Tipo de proceso inválido.")
+
+    if mongo_db.ExpedienteLote.find_one({"CodigoTrazabilidad": codigo}, {"_id": 1}):
+        raise HTTPException(status_code=409, detail="Ya existe un lote con ese código de trazabilidad.")
+
+    documento = data.model_dump()
+    documento["CodigoTrazabilidad"] = codigo
+
+    resultado = mongo_db.ExpedienteLote.insert_one(documento)
+    documento["_id"] = str(resultado.inserted_id)
+    documento.pop("_id", None)
+
+    return {
+        "mensaje": f"Expediente {codigo} registrado correctamente en MongoDB.",
+        "documento": documento,
+    }
 
 # ==========================================
 # VISTA 2: ENDPOINTS SQL SERVER (TRANSACCIONES ACID)
