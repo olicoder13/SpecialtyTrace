@@ -69,7 +69,7 @@ El script crea la base `SpecialtyTraceDB`, las tablas, los datos de ejemplo y lo
 
 ### 2. MongoDB
 
-Abra `SpecialtyTraceDB_mongodb.js` en MongoDB Shell o MongoDB Compass y ejecute su contenido para crear la base `SpecialtyTraceDB;`, las colecciones y los datos de demostración.
+Abra `SpecialtyTraceDB_mongodb.js` en MongoDB Shell o MongoDB Compass y ejecute su contenido para crear la base `SpecialtyTraceDB`, las colecciones y los datos de demostración.
 
 También se incluye el modelo:
 
@@ -94,7 +94,7 @@ $env:SQL_SERVER="localhost\SQLEXPRESS"
 $env:SQL_DATABASE="SpecialtyTraceDB"
 $env:SQL_DRIVER="ODBC Driver 17 for SQL Server"
 $env:MONGO_URI="mongodb://localhost:27017/"
-$env:MONGO_DB_NAME="SpecialtyTraceDB;"
+$env:MONGO_DB_NAME="SpecialtyTraceDB"
 ```
 
 Inicie la API:

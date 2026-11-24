@@ -11,7 +11,26 @@
           "isActivated": true,
           "type": "numeric",
           "error": {},
-          "GUID": "200bd437-c558-44dd-9286-95e9e143e540"
+          "GUID": "200bd437-c558-44dd-9286-95e9e143e540",
+          "childRelationships": [
+            "ec161de7-9030-4874-a8c2-e1539b0ec187",
+            "660c5956-016f-4c4e-9b02-a2e0b465e1f9"
+          ]
+        },
+        {
+          "name": "IdProductor",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "1c1c655e-60bf-4020-a316-b2219ef783ec",
+          "relationshipType": "Foreign Key",
+          "foreignCollection": "82ce232b-4788-42f4-baa1-a9786826080c",
+          "foreignField": [
+            "82ce232b-4788-42f4-baa1-a9786826080c",
+            "66aea408-7104-47f2-97de-935b940e65ae"
+          ],
+          "parentRelationship": "ed596dc6-826c-4bb2-8cb6-1bfdfb86ea35"
         },
         {
           "name": "CodigoTrazabilidad",
@@ -101,6 +120,52 @@
           "additionalItems": true,
           "error": {},
           "GUID": "f9d96cc6-a91e-4d9a-903e-7e935c257e4a"
+        },
+        {
+          "name": "Cosecha",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "document",
+          "properties": [
+            {
+              "name": "IdCosecha",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "numeric",
+              "error": {},
+              "GUID": "6aa6c8f4-203b-4ba2-9098-1e15c100897e"
+            },
+            {
+              "name": "FechaInicio",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "date",
+              "primaryKey": false,
+              "GUID": "1d1eccc9-5f57-45f0-a83e-f1c8de293bf4",
+              "error": {}
+            },
+            {
+              "name": "FechaFin",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "date",
+              "primaryKey": false,
+              "error": {},
+              "GUID": "c1b045e0-2c38-4bff-981e-85a4f461dca3"
+            },
+            {
+              "name": "CantidadKg",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "numeric",
+              "GUID": "163f972c-6f19-454e-813a-1eb2560756bb",
+              "mode": "double",
+              "error": {}
+            }
+          ],
+          "additionalProperties": false,
+          "error": {},
+          "GUID": "f5d266d0-cfa4-48a1-8d13-a70ba61b7cc2"
         }
       ],
       "definitions": {
@@ -141,7 +206,14 @@
           "isActivated": true,
           "type": "numeric",
           "error": {},
-          "GUID": "ba9bc306-fdca-4e90-ade2-63ba6d81065a"
+          "GUID": "ba9bc306-fdca-4e90-ade2-63ba6d81065a",
+          "relationshipType": "Foreign Key",
+          "foreignCollection": "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+          "foreignField": [
+            "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+            "200bd437-c558-44dd-9286-95e9e143e540"
+          ],
+          "parentRelationship": "ec161de7-9030-4874-a8c2-e1539b0ec187"
         },
         {
           "name": "CodigoTrazabilidad",
@@ -213,6 +285,334 @@
         "validationErrors": {}
       },
       "bucketId": "e003bc2d-ec16-4963-a490-279735b37e86"
+    },
+    {
+      "collectionName": "Productores",
+      "type": "object",
+      "properties": [
+        {
+          "name": "IdProductor",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "66aea408-7104-47f2-97de-935b940e65ae",
+          "error": {},
+          "childRelationships": [
+            "ed596dc6-826c-4bb2-8cb6-1bfdfb86ea35"
+          ]
+        },
+        {
+          "name": "Nombres",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "0ed4398d-050a-4088-a6bf-9f524c00abf4",
+          "error": {}
+        },
+        {
+          "name": "Apellidos",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "31563578-f7aa-49fb-b6c9-641fcac81059",
+          "error": {}
+        },
+        {
+          "name": "DocumentoIdentidad",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "9a69988c-e4a3-4813-975b-6f5d03b0dd5e",
+          "error": {}
+        },
+        {
+          "name": "Telefono",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "7a943315-660a-43b3-bed0-ec591294408b",
+          "error": {}
+        },
+        {
+          "name": "Correo",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "76c56065-4764-475a-b816-c8d5c3df72cb",
+          "error": {}
+        },
+        {
+          "name": "Parcelas",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "array",
+          "properties": [
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "numeric",
+              "error": {},
+              "GUID": "e744e86e-7754-4110-90aa-48ea779ed7e9",
+              "arrayItem": true,
+              "displayName": "IdParcela"
+            },
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "string",
+              "GUID": "b3b9f2eb-0b36-46e5-aefa-97370d2b49e9",
+              "arrayItem": true,
+              "displayName": "Nombre",
+              "error": {}
+            },
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "string",
+              "GUID": "21351325-9352-4a77-a412-7e7e41a6348b",
+              "arrayItem": true,
+              "displayName": "UbicacionGeo",
+              "error": {}
+            },
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "numeric",
+              "GUID": "d94e80b0-2360-4ce0-835d-b0bfc10b147a",
+              "arrayItem": true,
+              "displayName": "Hectareas",
+              "mode": "double",
+              "error": {}
+            },
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "numeric",
+              "GUID": "a2b1fe32-537c-437a-8157-8f55c09eade6",
+              "arrayItem": true,
+              "displayName": "Altitud",
+              "mode": "double",
+              "error": {}
+            }
+          ],
+          "additionalItems": true,
+          "error": {},
+          "GUID": "ba86a14c-b0e4-46d2-b903-b8f33bc291ac"
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "1c971a41-5c1a-4553-a514-8c6f703c42b9"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "82ce232b-4788-42f4-baa1-a9786826080c",
+      "bucketId": "e003bc2d-ec16-4963-a490-279735b37e86",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "Compradores",
+      "type": "object",
+      "properties": [
+        {
+          "name": "IdComprador",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "233dd14a-5996-41fa-8c27-8b2014c399f8",
+          "childRelationships": [
+            "f8584552-11ca-40f2-a217-91bbc690a798"
+          ]
+        },
+        {
+          "name": "RazonSocial",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "676bd5df-8b64-4520-aab3-275a071ef006",
+          "error": {}
+        },
+        {
+          "name": "RUC",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "f42486e4-06c0-4d1c-82b3-54373a1a3b7b",
+          "error": {}
+        },
+        {
+          "name": "TipoComprador",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "b9d528aa-b098-47ce-9b96-832420d2adf9",
+          "error": {}
+        },
+        {
+          "name": "PaisDestino",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "2eae107c-5115-45c0-9888-7e671e4597f5",
+          "error": {}
+        },
+        {
+          "name": "Telefono",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "d908728b-a722-4b10-98ad-8d6ddad18dcb",
+          "error": {}
+        },
+        {
+          "name": "Correo",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "da3faf89-19db-49bf-85ba-123994eff70b",
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "0e94f1b4-d106-46df-9b6e-04f4cde5230d"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "1b0cf3db-33b9-4923-9ec1-81437db82b99",
+      "bucketId": "e003bc2d-ec16-4963-a490-279735b37e86",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "Ventas",
+      "type": "object",
+      "properties": [
+        {
+          "name": "IdVenta",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "ef2f801f-029b-4d0b-8e14-f9e3370a80b6"
+        },
+        {
+          "name": "IdLote",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {},
+          "GUID": "bf5cd733-74b8-424c-9d1d-35a18bdd87af",
+          "relationshipType": "Foreign Key",
+          "foreignCollection": "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+          "foreignField": [
+            "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+            "200bd437-c558-44dd-9286-95e9e143e540"
+          ],
+          "parentRelationship": "660c5956-016f-4c4e-9b02-a2e0b465e1f9"
+        },
+        {
+          "name": "CodigoTranzabilidad",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "b3ee9e15-0ed4-4b43-95db-af367c2c0f2f",
+          "error": {}
+        },
+        {
+          "name": "IdComprador",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "error": {
+            "name": false,
+            "code": false
+          },
+          "GUID": "5ec85b5c-89cc-4e8c-88f8-999e9e4e0815",
+          "relationshipType": "Foreign Key",
+          "foreignCollection": "1b0cf3db-33b9-4923-9ec1-81437db82b99",
+          "foreignField": [
+            "1b0cf3db-33b9-4923-9ec1-81437db82b99",
+            "233dd14a-5996-41fa-8c27-8b2014c399f8"
+          ],
+          "parentRelationship": "f8584552-11ca-40f2-a217-91bbc690a798"
+        },
+        {
+          "name": "FechaVenta",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "date",
+          "primaryKey": false,
+          "error": {},
+          "GUID": "437650b9-5cf1-4f12-9be2-62be089c8fc1"
+        },
+        {
+          "name": "CantidadKgVendidos",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "c76d978d-b496-48e8-8b03-4649b6d6f9bd",
+          "mode": "double",
+          "error": {}
+        },
+        {
+          "name": "PrecioKiloUSD",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "939bcd78-6cf0-433e-aded-9bc8eb78306d",
+          "mode": "double",
+          "error": {}
+        },
+        {
+          "name": "TotalMontoUSD",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "5d902da3-973f-4281-ac98-50080501dd83",
+          "mode": "double",
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "16f50096-6c2c-4194-a8b7-9bf74edeb27b"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "d6f91765-6a15-4318-8865-16d9cdabc024",
+      "bucketId": "e003bc2d-ec16-4963-a490-279735b37e86",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
     }
   ],
   "buckets": [
@@ -221,7 +621,10 @@
       "type": "bucket",
       "collectionIds": [
         "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
-        "dc0790e6-d5b2-48f1-9260-f7108f24b6db"
+        "dc0790e6-d5b2-48f1-9260-f7108f24b6db",
+        "82ce232b-4788-42f4-baa1-a9786826080c",
+        "1b0cf3db-33b9-4923-9ec1-81437db82b99",
+        "d6f91765-6a15-4318-8865-16d9cdabc024"
       ],
       "backgroundColor": {
         "r": 129,
@@ -238,13 +641,233 @@
     }
   ],
   "views": [],
-  "relationships": [],
+  "relationships": [
+    {
+      "name": "fk_Productores_IdProductor_to_ExpedienteLote_IdProductor",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "82ce232b-4788-42f4-baa1-a9786826080c",
+          "66aea408-7104-47f2-97de-935b940e65ae"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+          "1c1c655e-60bf-4020-a316-b2219ef783ec"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "0..n",
+      "parentCollection": "82ce232b-4788-42f4-baa1-a9786826080c",
+      "childCollection": "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+      "GUID": "ed596dc6-826c-4bb2-8cb6-1bfdfb86ea35",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "hackoladeStyles": {
+        "GUID": "5ba15d9e-e8d7-4109-9dc2-bbf1d30eac2e",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1392.000000000001,
+            "y": 2278.386539713541
+          },
+          {
+            "x": 1322.0000000000011,
+            "y": 2278.386539713541
+          },
+          {
+            "x": 1322.0000000000011,
+            "y": 2364.2532389322905
+          },
+          {
+            "x": 1252.0000000000014,
+            "y": 2364.2532389322905
+          }
+        ],
+        "sides": [
+          "left",
+          "right"
+        ]
+      }
+    },
+    {
+      "name": "fk_ExpedienteLote_IdLote_to_FichaCalidad_IdLote",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+          "200bd437-c558-44dd-9286-95e9e143e540"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "dc0790e6-d5b2-48f1-9260-f7108f24b6db",
+          "ba9bc306-fdca-4e90-ade2-63ba6d81065a"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "0..n",
+      "parentCollection": "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+      "childCollection": "dc0790e6-d5b2-48f1-9260-f7108f24b6db",
+      "GUID": "ec161de7-9030-4874-a8c2-e1539b0ec187",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "hackoladeStyles": {
+        "GUID": "ffd4f8a3-f843-4af6-8fbc-93dfa94f0157",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1310.0000000000002,
+            "y": 2136.0532063802075
+          },
+          {
+            "x": 1351.0000000000005,
+            "y": 2136.0532063802075
+          },
+          {
+            "x": 1351.0000000000005,
+            "y": 2165.719873046874
+          },
+          {
+            "x": 1392.000000000001,
+            "y": 2165.719873046874
+          }
+        ],
+        "sides": [
+          "right",
+          "left"
+        ]
+      }
+    },
+    {
+      "name": "fk_ExpedienteLote_IdLote_to_Ventas_IdLote",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+          "200bd437-c558-44dd-9286-95e9e143e540"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "d6f91765-6a15-4318-8865-16d9cdabc024",
+          "bf5cd733-74b8-424c-9d1d-35a18bdd87af"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "0..n",
+      "parentCollection": "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
+      "childCollection": "d6f91765-6a15-4318-8865-16d9cdabc024",
+      "GUID": "660c5956-016f-4c4e-9b02-a2e0b465e1f9",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "hackoladeStyles": {
+        "GUID": "60f2ada4-7752-42d8-9d53-1983953bedde",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1290.7000000000012,
+            "y": 2591.4532063802108
+          },
+          {
+            "x": 1290.7000000000012,
+            "y": 2491.253206380209
+          },
+          {
+            "x": 1526.000000000001,
+            "y": 2491.253206380209
+          },
+          {
+            "x": 1526.000000000001,
+            "y": 2391.0532063802075
+          }
+        ],
+        "sides": [
+          "top",
+          "bottom"
+        ]
+      }
+    },
+    {
+      "name": "fk_Compradores_IdComprador_to_Ventas_IdComprador",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "1b0cf3db-33b9-4923-9ec1-81437db82b99",
+          "233dd14a-5996-41fa-8c27-8b2014c399f8"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "d6f91765-6a15-4318-8865-16d9cdabc024",
+          "5ec85b5c-89cc-4e8c-88f8-999e9e4e0815"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "0..n",
+      "parentCollection": "1b0cf3db-33b9-4923-9ec1-81437db82b99",
+      "childCollection": "d6f91765-6a15-4318-8865-16d9cdabc024",
+      "GUID": "f8584552-11ca-40f2-a217-91bbc690a798",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "hackoladeStyles": {
+        "GUID": "14be72b7-1672-49d4-9a6f-b35a67e18004",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1420.2000000000012,
+            "y": 2679.4532063802108
+          },
+          {
+            "x": 1452.079980468751,
+            "y": 2679.4532063802108
+          },
+          {
+            "x": 1452.079980468751,
+            "y": 2646.0532063802034
+          },
+          {
+            "x": 1483.959960937501,
+            "y": 2646.0532063802034
+          }
+        ],
+        "sides": [
+          "right",
+          "left"
+        ]
+      }
+    }
+  ],
   "users": [],
   "diagramViews": [],
   "idToNameHashTable": {
     "e003bc2d-ec16-4963-a490-279735b37e86": "SpecialtyTraceDB",
     "3513e4a5-37b1-4dd6-bf73-49f4e364707a": "ExpedienteLote",
-    "200bd437-c558-44dd-9286-95e9e143e540": "IdLote",
     "aae1f3d1-6c1c-436f-a5db-a2033f8498be": "CodigoTrazabilidad",
     "dfbb575c-bb1f-4efb-9747-5752230cf015": "IdParcela",
     "ea7e55cb-6c2c-49b0-aaa1-03a6d8d7ab2c": "Variedad",
@@ -261,7 +884,52 @@
     "b6c6f4cf-0cac-4809-9e55-a527544a8a3c": "CantidadDefectos",
     "3d397b13-29d4-4bd0-b075-5efe287d6d5e": "PuntajeSCA",
     "e4cec36b-df5f-49b7-86e2-9257bc6984c4": "NotasSensoriales",
-    "a4d9c644-89ea-4b48-9de1-6291c5cfc020": "CatadorResponsable"
+    "a4d9c644-89ea-4b48-9de1-6291c5cfc020": "CatadorResponsable",
+    "82ce232b-4788-42f4-baa1-a9786826080c": "Productores",
+    "66aea408-7104-47f2-97de-935b940e65ae": "IdProductor",
+    "0ed4398d-050a-4088-a6bf-9f524c00abf4": "Nombres",
+    "31563578-f7aa-49fb-b6c9-641fcac81059": "Apellidos",
+    "9a69988c-e4a3-4813-975b-6f5d03b0dd5e": "DocumentoIdentidad",
+    "7a943315-660a-43b3-bed0-ec591294408b": "Telefono",
+    "76c56065-4764-475a-b816-c8d5c3df72cb": "Correo",
+    "ba86a14c-b0e4-46d2-b903-b8f33bc291ac": "Parcelas",
+    "f5d266d0-cfa4-48a1-8d13-a70ba61b7cc2": "Cosecha",
+    "1b0cf3db-33b9-4923-9ec1-81437db82b99": "Compradores",
+    "233dd14a-5996-41fa-8c27-8b2014c399f8": "IdComprador",
+    "676bd5df-8b64-4520-aab3-275a071ef006": "RazonSocial",
+    "f42486e4-06c0-4d1c-82b3-54373a1a3b7b": "RUC",
+    "d6f91765-6a15-4318-8865-16d9cdabc024": "Ventas",
+    "ef2f801f-029b-4d0b-8e14-f9e3370a80b6": "IdVenta",
+    "bf5cd733-74b8-424c-9d1d-35a18bdd87af": "IdLote",
+    "b3ee9e15-0ed4-4b43-95db-af367c2c0f2f": "CodigoTranzabilidad",
+    "5ec85b5c-89cc-4e8c-88f8-999e9e4e0815": "IdComprador",
+    "437650b9-5cf1-4f12-9be2-62be089c8fc1": "FechaVenta",
+    "af0d2b26-2c94-493a-a05b-e013f1b48d23": "CantidadKgVendidos",
+    "18ca085f-e68a-4ecc-b0a9-19fa1ec80c45": "PrecioKiloUSD",
+    "dc680550-6d97-4e41-99bb-788e7b7ec9f9": "CantidadKgVendidos",
+    "dd404825-0ce6-4af8-89aa-f9be1f521370": "PrecioKiloUSD",
+    "bfc62248-891d-4105-be15-c0b061727e44": "TotalMontoUSD",
+    "7fd79a6b-a040-49b4-bfbe-5dc88fb151c7": "TipoComprador",
+    "1b0f56fc-e86e-471f-a061-e254e7121c5d": "PaisDestino",
+    "9f293e66-6b1c-4f29-a325-30ca29fd336b": "Telefono",
+    "9115cc5f-df2e-4a38-87b3-53633c22aa45": "Correo",
+    "1c1c655e-60bf-4020-a316-b2219ef783ec": "IdProductor",
+    "200bd437-c558-44dd-9286-95e9e143e540": "IdLote",
+    "ed596dc6-826c-4bb2-8cb6-1bfdfb86ea35": "fk_Productores_IdProductor_to_ExpedienteLote_IdProductor",
+    "ec161de7-9030-4874-a8c2-e1539b0ec187": "fk_ExpedienteLote_IdLote_to_FichaCalidad_IdLote",
+    "660c5956-016f-4c4e-9b02-a2e0b465e1f9": "fk_ExpedienteLote_IdLote_to_Ventas_IdLote",
+    "c76d978d-b496-48e8-8b03-4649b6d6f9bd": "CantidadKgVendidos",
+    "939bcd78-6cf0-433e-aded-9bc8eb78306d": "PrecioKiloUSD",
+    "5d902da3-973f-4281-ac98-50080501dd83": "TotalMontoUSD",
+    "f8584552-11ca-40f2-a217-91bbc690a798": "fk_Compradores_IdComprador_to_Ventas_IdComprador",
+    "b9d528aa-b098-47ce-9b96-832420d2adf9": "TipoComprador",
+    "2eae107c-5115-45c0-9888-7e671e4597f5": "PaisDestino",
+    "d908728b-a722-4b10-98ad-8d6ddad18dcb": "Telefono",
+    "da3faf89-19db-49bf-85ba-123994eff70b": "Correo",
+    "6aa6c8f4-203b-4ba2-9098-1e15c100897e": "IdCosecha",
+    "1d1eccc9-5f57-45f0-a83e-f1c8de293bf4": "FechaInicio",
+    "c1b045e0-2c38-4bff-981e-85a4f461dca3": "FechaFin",
+    "163f972c-6f19-454e-813a-1eb2560756bb": "CantidadKg"
   },
   "definitions": {
     "type": "definitions",
@@ -293,7 +961,7 @@
       "modelName": false
     }
   },
-  "lastModifTS": "2026-10-28T14:12:10.038Z",
+  "lastModifTS": "2026-11-24T03:09:06.046Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {
@@ -308,17 +976,41 @@
         "erd": [
           {
             "GUID": "3513e4a5-37b1-4dd6-bf73-49f4e364707a",
-            "x": 1409.0000000000005,
-            "y": 1125.3333333333333,
+            "x": 1392.000000000001,
+            "y": 2053.0532063802075,
             "width": 268,
-            "height": 230,
+            "height": 338,
             "color": {}
           },
           {
             "GUID": "dc0790e6-d5b2-48f1-9260-f7108f24b6db",
-            "x": 1068.9999999999998,
-            "y": 1120.333333333333,
+            "x": 1052.0000000000002,
+            "y": 2048.0532063802075,
             "width": 258,
+            "height": 176,
+            "color": {}
+          },
+          {
+            "GUID": "82ce232b-4788-42f4-baa1-a9786826080c",
+            "x": 990.0000000000014,
+            "y": 2240.2532389322905,
+            "width": 262,
+            "height": 248,
+            "color": {}
+          },
+          {
+            "GUID": "1b0cf3db-33b9-4923-9ec1-81437db82b99",
+            "x": 1483.959960937501,
+            "y": 2567.0532063802034,
+            "width": 217,
+            "height": 158,
+            "color": {}
+          },
+          {
+            "GUID": "d6f91765-6a15-4318-8865-16d9cdabc024",
+            "x": 1161.2000000000012,
+            "y": 2591.4532063802108,
+            "width": 259,
             "height": 176,
             "color": {}
           }
@@ -331,8 +1023,8 @@
         },
         "buckets": [
           {
-            "x": 1004.9999999999998,
-            "y": 1056.333333333333,
+            "x": 926.0000000000014,
+            "y": 1984.0532063802075,
             "GUID": "e003bc2d-ec16-4963-a490-279735b37e86"
           }
         ],

@@ -476,6 +476,11 @@
                   class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
               </div>
               <div>
+                <label class="block text-xs font-bold mb-1">ID Productor</label>
+                <input id="m-id-productor" type="number" min="1" value="1" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
                 <label class="block text-xs font-bold mb-1">Código Trazabilidad</label>
                 <input id="m-codigo" type="text" placeholder="TRZ-26-PCH-011" required
                   class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm font-mono uppercase" />
@@ -507,6 +512,26 @@
               <div>
                 <label class="block text-xs font-bold mb-1">Duración (días)</label>
                 <input id="m-duracion" type="number" min="1" value="15" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">ID Cosecha</label>
+                <input id="m-id-cosecha" type="number" min="1" value="11" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Inicio de cosecha</label>
+                <input id="m-fecha-inicio" type="date" value="2026-11-01" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Fin de cosecha</label>
+                <input id="m-fecha-fin" type="date" value="2026-11-15" required
+                  class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Cantidad cosechada (kg)</label>
+                <input id="m-cantidad-cosecha" type="number" step="0.01" min="0.01" value="250" required
                   class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5 text-sm" />
               </div>
               <div>
@@ -573,6 +598,10 @@
                   <div class="flex justify-between">
                     <dt class="text-stone-500">Peso Neto Lote:</dt>
                     <dd class="font-bold" id="qr-peso">-</dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <dt class="text-stone-500">Cosecha:</dt>
+                    <dd class="font-bold" id="qr-cosecha">-</dd>
                   </div>
                   <div class="flex justify-between">
                     <dt class="text-stone-500">Método Beneficiado:</dt>
@@ -1100,10 +1129,17 @@
 
         const payload = {
           IdLote: Number(document.getElementById("m-id-lote").value),
+          IdProductor: Number(document.getElementById("m-id-productor").value),
           CodigoTrazabilidad: document.getElementById("m-codigo").value.trim().toUpperCase(),
           IdParcela: Number(document.getElementById("m-id-parcela").value),
           Variedad: document.getElementById("m-variedad").value.trim(),
           PesoTotalKg: Number(document.getElementById("m-peso").value),
+          Cosecha: {
+            IdCosecha: Number(document.getElementById("m-id-cosecha").value),
+            FechaInicio: document.getElementById("m-fecha-inicio").value,
+            FechaFin: document.getElementById("m-fecha-fin").value,
+            CantidadKg: Number(document.getElementById("m-cantidad-cosecha").value),
+          },
           ProcesoBeneficiado: {
             TipoProceso: document.getElementById("m-proceso").value,
             DuracionDias: Number(document.getElementById("m-duracion").value),
@@ -1154,6 +1190,17 @@
             `Lote #${data.IdLote} • Parcela #${data.IdParcela}`;
           document.getElementById("qr-peso").textContent =
             `${data.PesoTotalKg} kg`;
+          const cosecha = data.Cosecha || {};
+          const fechaInicio = cosecha.FechaInicio
+            ? new Date(cosecha.FechaInicio).toLocaleDateString("es-PE")
+            : "-";
+          const fechaFin = cosecha.FechaFin
+            ? new Date(cosecha.FechaFin).toLocaleDateString("es-PE")
+            : "-";
+          document.getElementById("qr-cosecha").textContent =
+            cosecha.IdCosecha
+              ? `#${cosecha.IdCosecha} • ${fechaInicio} - ${fechaFin}`
+              : "-";
           document.getElementById("qr-proceso").textContent =
             data.ProcesoBeneficiado?.TipoProceso || "-";
           document.getElementById("qr-dias").textContent =

@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import pyodbc
 from pymongo import MongoClient
 import os
-from datetime import date
+from datetime import date, datetime, time
 
 app = FastAPI(title="Specialty Trace API - Persistencia Políglota")
 
@@ -31,7 +31,7 @@ SQL_CONN_STR = (
 )
 
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/")
-MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "SpecialtyTraceDB;")
+MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "SpecialtyTraceDB")
 
 mongo_client = MongoClient(MONGO_URI)
 mongo_db = mongo_client[MONGO_DB_NAME]
@@ -70,12 +70,20 @@ class CertificacionCreate(BaseModel):
     NombreSello: str
     EntidadEmisora: str
 
+class CosechaCreate(BaseModel):
+    IdCosecha: int
+    FechaInicio: date
+    FechaFin: date
+    CantidadKg: float
+
 class ExpedienteMongoCreate(BaseModel):
     IdLote: int
+    IdProductor: int
     CodigoTrazabilidad: str
     IdParcela: int
     Variedad: str
     PesoTotalKg: float
+    Cosecha: CosechaCreate
     ProcesoBeneficiado: ProcesoBeneficiadoCreate
     Certificaciones: list[CertificacionCreate] = []
 
@@ -119,11 +127,40 @@ def crear_expediente_mongo(data: ExpedienteMongoCreate):
     if data.ProcesoBeneficiado.TipoProceso not in ("Lavado", "Natural", "Honey"):
         raise HTTPException(status_code=400, detail="Tipo de proceso inválido.")
 
+    if data.Cosecha.FechaFin < data.Cosecha.FechaInicio:
+        raise HTTPException(status_code=400, detail="La fecha fin de cosecha no puede ser anterior a la fecha inicio.")
+
+    if data.Cosecha.CantidadKg <= 0:
+        raise HTTPException(status_code=400, detail="La cantidad cosechada debe ser mayor que cero.")
+
     if mongo_db.ExpedienteLote.find_one({"CodigoTrazabilidad": codigo}, {"_id": 1}):
         raise HTTPException(status_code=409, detail="Ya existe un lote con ese código de trazabilidad.")
 
+    if mongo_db.ExpedienteLote.find_one({"IdLote": data.IdLote}, {"_id": 1}):
+        raise HTTPException(status_code=409, detail="Ya existe un lote con ese ID.")
+
+    productor = mongo_db.Productores.find_one(
+        {"IdProductor": data.IdProductor},
+        {"Parcelas": 1},
+    )
+    if not productor:
+        raise HTTPException(status_code=400, detail="El productor indicado no existe.")
+
+    parcelas = productor.get("Parcelas", [])
+    if not any(parcela.get("IdParcela") == data.IdParcela for parcela in parcelas):
+        raise HTTPException(
+            status_code=400,
+            detail="La parcela indicada no pertenece al productor seleccionado.",
+        )
+
     documento = data.model_dump()
     documento["CodigoTrazabilidad"] = codigo
+    documento["Cosecha"]["FechaInicio"] = datetime.combine(
+        data.Cosecha.FechaInicio, time.min
+    )
+    documento["Cosecha"]["FechaFin"] = datetime.combine(
+        data.Cosecha.FechaFin, time.min
+    )
 
     resultado = mongo_db.ExpedienteLote.insert_one(documento)
     documento["_id"] = str(resultado.inserted_id)
